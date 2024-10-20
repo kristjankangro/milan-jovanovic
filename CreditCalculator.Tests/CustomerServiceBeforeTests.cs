@@ -5,9 +5,9 @@ namespace CreditCalculator.Tests;
 
 public class CustomerServiceBeforeTests
 {
-    public const int Regular = 1;
-    public const int ImportantClient = 2;
-    public const int VeryImportantClient = 3;
+    private const int Regular = 1;
+    private const int ImportantClient = 2;
+    private const int VeryImportantClient = 3;
 
     [Theory]
     [InlineData("", "last", "test@test.com")]
@@ -21,7 +21,7 @@ public class CustomerServiceBeforeTests
         string email)
     {
         // Arrange
-        var customerService = new CustomerService();
+        var customerService = new CustomerService(new CompanyRepository(), new CustomerRepository(), new CustomerCreditServiceClient());
 
         // Act
         var result = customerService.AddCustomer(firstName, lastName, email, DateTime.Now, Regular);
@@ -34,7 +34,7 @@ public class CustomerServiceBeforeTests
     public void AddCustomer_ReturnsFalse_WhenDateOfBirthIsInvalid()
     {
         // Arrange
-        var customerService = new CustomerService();
+        var customerService = new CustomerService(new CompanyRepository(), new CustomerRepository(), new CustomerCreditServiceClient());
         var invalidDateOfBirth = DateTime.Now.AddYears(-20);
 
         // Act
@@ -48,7 +48,7 @@ public class CustomerServiceBeforeTests
     public void AddCustomer_ReturnsTrue_WhenVeryImportantClient()
     {
         // Arrange
-        var customerService = new CustomerService();
+        var customerService = new CustomerService(new CompanyRepository(), new CustomerRepository(), new CustomerCreditServiceClient());
 
         // Act
         var result = customerService.AddCustomer("first", "last", "test@test.com", DateTime.Now.AddYears(-22), VeryImportantClient);
@@ -61,7 +61,7 @@ public class CustomerServiceBeforeTests
     public void AddCustomer_ReturnsFalse_WhenImportantClientAndUnder40()
     {
         // Arrange
-        var customerService = new CustomerService();
+        var customerService = new CustomerService(new CompanyRepository(), new CustomerRepository(), new CustomerCreditServiceClient());
 
         // Act
         var result = customerService.AddCustomer("first", "last", "test@test.com", DateTime.Now.AddYears(-22), ImportantClient);
@@ -74,7 +74,7 @@ public class CustomerServiceBeforeTests
     public void AddCustomer_ReturnsTrue_WhenImportantClientAndOver40()
     {
         // Arrange
-        var customerService = new CustomerService();
+        var customerService = new CustomerService(new CompanyRepository(), new CustomerRepository(), new CustomerCreditServiceClient());
 
         // Act
         var result = customerService.AddCustomer("first", "last", "test@test.com", DateTime.Now.AddYears(-41), ImportantClient);
@@ -87,7 +87,7 @@ public class CustomerServiceBeforeTests
     public void AddCustomer_ReturnsTrue_WhenRegularClientAndOver40()
     {
         // Arrange
-        var customerService = new CustomerService();
+        var customerService = new CustomerService(new CompanyRepository(), new CustomerRepository(), new CustomerCreditServiceClient());
 
         // Act
         var result = customerService.AddCustomer("first", "last", "test@test.com", DateTime.Now.AddYears(-41), Regular);
@@ -103,7 +103,7 @@ public class CustomerServiceBeforeTests
     public void AddCustomer_ReturnsTrue_WhenJohnDoe(int companyId)
     {
         // Arrange
-        var customerService = new CustomerService();
+        var customerService = new CustomerService(new CompanyRepository(), new CustomerRepository(), new CustomerCreditServiceClient());
 
         // Act
         var result = customerService.AddCustomer("John", "Doe", "test@test.com", DateTime.Now.AddYears(-41), companyId);
