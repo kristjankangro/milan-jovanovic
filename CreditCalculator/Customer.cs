@@ -9,4 +9,6 @@ public class Customer
     public string LastName { get; set; }
     public bool HasCreditLimit { get; set; }
     public decimal? CreditLimit { get; set; }
+    
+    public bool IsUnderLimit () => HasCreditLimit && CreditLimit < 500;
 }

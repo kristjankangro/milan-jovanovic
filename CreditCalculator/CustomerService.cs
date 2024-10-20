@@ -3,7 +3,7 @@
 public class CustomerService( 
     CompanyRepository companyRepository, 
     CustomerRepository customerRepository, 
-    CustomerCreditServiceClient creditService )
+    CreditLimitCalculator creditLimitCalculator )
 {
     public bool AddCustomer(
         string firstName,
@@ -12,7 +12,9 @@ public class CustomerService(
         DateTime dateOfBirth,
         int companyId)
     {
-        if (!IsValid(firstName, lastName, email, dateOfBirth)) return false;
+        //todo result pattern, what went wrong
+        if (!IsValid(firstName, lastName, email, dateOfBirth)) 
+            return false;
 
         var company = companyRepository.GetById(companyId);
 
@@ -25,12 +27,11 @@ public class CustomerService(
             LastName = lastName
         };
 
-        (customer.HasCreditLimit, customer.CreditLimit) = CreditLimitCalculator.Calculate(creditService, company, customer);
+        (customer.HasCreditLimit, customer.CreditLimit) = creditLimitCalculator.Calculate(company, customer);
 
-        if (customer.HasCreditLimit && customer.CreditLimit < 500)
-        {
+        //todo what went wrong result pattern
+        if (customer.IsUnderLimit())
             return false;
-        }
 
         var customerRepository = new CustomerRepository();
         customerRepository.AddCustomer(customer);
