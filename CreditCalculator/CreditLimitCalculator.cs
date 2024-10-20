@@ -1,13 +1,13 @@
-using static CreditCalculator.Before.CompanyType;
+using static CreditCalculator.CompanyType;
 
-namespace CreditCalculator.Before;
+namespace CreditCalculator;
 
 public class CreditLimitCalculator(CustomerCreditServiceClient creditService)
 {
-    public (bool HasCeditLimit, decimal? creditLimit) Calculate(Company company, Customer customer)
+    public (bool HasCeditLimit, decimal? creditLimit) Calculate(Customer customer)
     {
         //todo strategy pattern > type calculators
-        return company.Type switch
+        return customer.Company.Type switch
         {
             VeryImportant => (false, null),
             Important => (true, GetCreditLimit(customer) * 2),
@@ -15,11 +15,6 @@ public class CreditLimitCalculator(CustomerCreditServiceClient creditService)
         };
     }
 
-    private decimal GetCreditLimit(Customer customer)
-    {
-        return creditService.GetCreditLimit(
-            customer.FirstName,
-            customer.LastName,
-            customer.DateOfBirth);
-    }
+    private decimal GetCreditLimit(Customer customer) =>
+        creditService.GetCreditLimit(customer.FirstName, customer.LastName, customer.DateOfBirth);
 }

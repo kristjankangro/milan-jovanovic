@@ -1,4 +1,6 @@
-﻿namespace CreditCalculator.Before;
+﻿using CreditCalculator.Before;
+
+namespace CreditCalculator;
 
 public class Customer
 {

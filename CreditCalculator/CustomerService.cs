@@ -27,7 +27,7 @@ public class CustomerService(
             LastName = lastName
         };
 
-        (customer.HasCreditLimit, customer.CreditLimit) = creditLimitCalculator.Calculate(company, customer);
+        (customer.HasCreditLimit, customer.CreditLimit) = creditLimitCalculator.Calculate(customer);
 
         //todo what went wrong result pattern
         if (customer.IsUnderLimit())
