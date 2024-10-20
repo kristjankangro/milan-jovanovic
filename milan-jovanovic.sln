@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "milan-jovanovic", "milan-jovanovic\milan-jovanovic.csproj", "{B6F3DDA8-5D1D-4AEE-9029-4AB5A556D8BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditCalculator", "CreditCalculator\CreditCalculator.csproj", "{4D06FD2E-4CBE-4543-9C72-303CC74AFEEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditCalculator.Tests", "CreditCalculator.Tests\CreditCalculator.Tests.csproj", "{6EB4E514-1B72-4546-9A34-F53C3590F1D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{B6F3DDA8-5D1D-4AEE-9029-4AB5A556D8BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6F3DDA8-5D1D-4AEE-9029-4AB5A556D8BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6F3DDA8-5D1D-4AEE-9029-4AB5A556D8BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D06FD2E-4CBE-4543-9C72-303CC74AFEEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D06FD2E-4CBE-4543-9C72-303CC74AFEEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D06FD2E-4CBE-4543-9C72-303CC74AFEEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D06FD2E-4CBE-4543-9C72-303CC74AFEEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EB4E514-1B72-4546-9A34-F53C3590F1D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB4E514-1B72-4546-9A34-F53C3590F1D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB4E514-1B72-4546-9A34-F53C3590F1D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB4E514-1B72-4546-9A34-F53C3590F1D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
